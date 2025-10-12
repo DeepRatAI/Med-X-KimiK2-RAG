@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medex"
+version = "0.1.0"
+description = "Clinical reasoning assistant (educational) with RAG"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "DeepRatAI" }]
+dependencies = [
+  "streamlit==1.38.0",
+  "openai==1.44.0",
+  "transformers==4.44.2",
+  "sentence-transformers==3.0.1",
+  "numpy==1.26.4",
+  "scikit-learn==1.5.1",
+  "click==8.1.7"
+]
+
+[project.scripts]
+medex = "medex.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["medex*"]
