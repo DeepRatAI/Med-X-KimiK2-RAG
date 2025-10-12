@@ -1,5 +1,3 @@
-# Enlaza con tus módulos existentes
-# Si tus funciones/clases tienen otros nombres, cámbialos aquí.
 try:
     from MEDEX_FINAL import build_full_pipeline as _build_full_pipeline  # ejemplo
 except ImportError:
