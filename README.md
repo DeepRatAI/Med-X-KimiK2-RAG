@@ -131,17 +131,6 @@ Este proyecto se distribuye bajo la licencia **MIT** (archivo LICENSE incluido).
 
 ---
 
-## 📬 Contacto
-
-**Autor:** DeepRatAI
-**Correo:** [contact@deepratai.dev](mailto:contact@deepratai.dev)
-**Twitter:** [@DeepRatAI](https://twitter.com/DeepRatAI)
-
----
-
-## 🌐 Cita
-
-DeepRatAI. *MedeX: AI-powered Clinical Reasoning Assistant.*
 Hugging Face Spaces, 2025. [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
 
 ---
