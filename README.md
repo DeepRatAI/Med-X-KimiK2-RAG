@@ -45,7 +45,7 @@ MedeX/
 ## 🧰 Instalación local
 
 1. Clona el repositorio:
-   `git clone https://github.com/DeepRatAI/MedeX.git && cd MedeX`
+   `git clone https://github.com/DeepRatAI/Med-X-KimiK2-RAG.git && cd Med-X-KimiK2-RAG`
 
 2. Crea y activa un entorno virtual:
    `python -m venv .venv && source .venv/bin/activate`
