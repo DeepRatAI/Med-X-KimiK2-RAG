@@ -48,12 +48,10 @@ def test_medex_does_not_require_legacy():
     This verifies the package can be used independently
     """
     # Remove legacy from sys.modules if present
+    legacy_names = ["MEDEX_FINAL", "medical_rag_system", "MEDEX_ULTIMATE"]
     legacy_modules = [
         key for key in list(sys.modules.keys())
-        if any(
-            legacy in key
-            for legacy in ["MEDEX_FINAL", "medical_rag_system", "MEDEX_ULTIMATE"]
-        )
+        if any(legacy in key for legacy in legacy_names)
     ]
     for mod in legacy_modules:
         del sys.modules[mod]

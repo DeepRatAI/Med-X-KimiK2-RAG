@@ -7,7 +7,7 @@ import os
 from typing import Optional
 
 
-def get_api_key() -> Optional[str]:
+def get_api_key() -> str:
     """Get KIMI API key from environment"""
     return os.environ.get("KIMI_API_KEY", "")
 

@@ -34,7 +34,7 @@ def query(mode, query):
         response = run_once(query, mode=mode)
         click.echo(response)
     except Exception as e:
-        click.echo(f"Error: {e}", err=True)
+        click.echo(f"Error processing query: {e}", err=True)
         raise click.Abort()
 
 

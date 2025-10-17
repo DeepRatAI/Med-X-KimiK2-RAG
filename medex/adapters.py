@@ -3,6 +3,7 @@ Adapters module for MedeX
 Handles integration with RAG pipeline and legacy systems
 """
 
+import sys
 from typing import Optional, Any
 
 
@@ -25,8 +26,7 @@ def build_pipeline(mode: str = "mock") -> Optional[Any]:
     # In production, this would do lazy import of MEDEX_FINAL
     # For now, return None if legacy not available
     try:
-        # Lazy import to avoid import-time dependencies on legacy
-        import sys
+        # Check if legacy is already loaded (lazy import pattern)
         if "MEDEX_FINAL" in sys.modules:
             # Legacy available
             pass
