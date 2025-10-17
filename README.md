@@ -1,11 +1,19 @@
-# 🩺 MedeX — AI-Powered Clinical Reasoning Assistant (Educational Prototype)
+# 🩺 MedeX — AI-Powered Clinical Reasoning Assistant
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![HuggingFace Space](https://img.shields.io/badge/🧠_Demo-HuggingFace-yellow)](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+[![Python](https://img.shields.io/badge/python-3.10+-green)]()
 
-MedeX es un asistente conversacional clínico impulsado por modelos de lenguaje (LLMs) y técnicas de *Retrieval-Augmented Generation (RAG)*.
-Su propósito es **educativo y de investigación**, diseñado para explorar cómo la IA puede asistir en razonamiento clínico, docencia médica y análisis de casos, **sin reemplazar** el juicio profesional humano.
+
+**MedeX** es un asistente conversacional clínico impulsado por modelos de lenguaje (LLMs) y técnicas de *Retrieval-Augmented Generation (RAG)*.
+Su propósito es educativo y de investigación, diseñado para explorar cómo la IA puede asistir en razonamiento clínico, docencia médica y análisis de casos, **sin reemplazar el juicio profesional humano**.
 
 **Demo:** [MedeX en Hugging Face Spaces](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
 **Licencia:** MIT
-**Lenguaje:** Python 3.10+
+**Lenguaje:** Python ≥ 3.10
+
+---
+
+- [🧭 Roadmap de Desarrollo](docs/ROADMAP.md)
 
 ---
 
@@ -20,54 +28,63 @@ Por favor, **no ingreses datos personales ni información médica identificable 
 
 ## 🚀 Características
 
-* Arquitectura **RAG** con recuperación contextual antes de la generación.
-* Motor **LLM modular**, intercambiable (Kimi, OpenAI, DeepSeek, etc.).
-* Flujo **multimodal** experimental: texto e imagen.
-* Respuestas con **explicaciones y citas** de contexto.
-* Despliegue reproducible con **Docker** y **Hugging Face Spaces**.
+* 🧠 Arquitectura RAG con recuperación contextual antes de la generación.
+* 🔄 Motor LLM modular, intercambiable (Kimi, OpenAI, DeepSeek, etc.).
+* 🧬 Flujo multimodal experimental: texto e imagen.
+* 💬 Respuestas con explicaciones y citas de contexto.
+* 🐳 Despliegue reproducible con Docker y Hugging Face Spaces.
 
----
-
-## 🧱 Estructura del proyecto
-
-MedeX/
-
-* `streamlit_app.py`: interfaz principal
-* `MEDEX_FINAL/`: lógica del pipeline y módulos RAG
-* `test_deployment.py`: pruebas básicas de despliegue
-* `requirements.txt`: dependencias versionadas
-* `.streamlit/config.toml`: configuración segura
-* `Dockerfile`: build reproducible
-* `LICENSE`, `README.md`
 
 ---
 
 ## 🧰 Instalación local
 
-1. Clona el repositorio:
-   `git clone https://github.com/DeepRatAI/Med-X-KimiK2-RAG.git && cd Med-X-KimiK2-RAG`
+### Estado del repositorio
 
-2. Crea y activa un entorno virtual:
-   `python -m venv .venv && source .venv/bin/activate`
+* **`main`** → Rama **legacy**, mantiene el código original y el Space funcionando.
+* **`feature/package-v0.1.0`** → Rama **empaquetada**, con CLI profesional, tests y mock mode.
+* **Último release:** [v0.1.0](https://github.com/DeepRatAI/Med-X-KimiK2-RAG/releases/tag/v0.1.0)
 
-3. Instala dependencias:
-   `pip install -r requirements.txt`
+### Clonar el repositorio
 
-4. Copia el ejemplo de variables de entorno y agrega tu API key:
+```bash
+git clone https://github.com/DeepRatAI/Med-X-KimiK2-RAG.git
+cd Med-X-KimiK2-RAG
+```
 
-   ```
-   cp .env.example .env
-   KIMI_API_KEY=tu_api_key_aqui
-   ```
+### Ejecutar la app original (legacy)
 
-5. Ejecuta la app localmente:
-   `streamlit run streamlit_app.py`
+```bash
+python -m venv .venv
+source .venv/bin/activate  # En Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env
+# Edita la API key:
+# KIMI_API_KEY=tu_api_key_aqui
+streamlit run streamlit_app.py
+```
+
+### Probar la versión empaquetada (sin tocar `main`)
+
+Opción 1 — Instalar directamente desde el **release**:
+
+```bash
+pip install "git+https://github.com/DeepRatAI/Med-X-KimiK2-RAG@v0.1.0#egg=medex"
+```
+
+Opción 2 — Cambiar a la rama empaquetada y ejecutarla localmente:
+
+```bash
+git checkout feature/package-v0.1.0
+pip install -e .
+medex --mode educational --query "¿Qué es la diabetes?"
+```
 
 ---
 
 ## 🐳 Despliegue con Docker
 
-```
+```bash
 docker build -t medex .
 docker run -p 7860:7860 -e KIMI_API_KEY=tu_api_key_aqui medex
 ```
@@ -79,10 +96,16 @@ Luego abre [http://localhost:7860](http://localhost:7860) y listo.
 ## ☁️ Demo oficial
 
 Puedes probar MedeX directamente en su Space:
-**👉 [huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)**
+👉 [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
 
-Las claves y configuraciones se gestionan de forma segura en **Settings → Secrets** del Space.
-No existen claves por defecto en el código.
+
+## ☁️ Demo oficial
+
+Puedes probar MedeX directamente en su Space:
+👉 [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+
+> Las claves y configuraciones se gestionan de forma segura en **Settings → Secrets** del Space.
+> No existen claves por defecto en el código.
 
 ---
 
@@ -100,40 +123,100 @@ No existen claves por defecto en el código.
 ## 🧪 Pruebas
 
 Para ejecutar las pruebas:
-`pytest -q`
+
+```bash
+pytest -q
+```
 
 El archivo `test_deployment.py` verifica la conectividad y funcionamiento básico del pipeline.
 
 ---
 
-## 🧩 Roadmap
-
-* Conversión del núcleo a paquete `medex/`.
-* Evaluación automática con métricas clínicas.
-* Dashboard de trazabilidad anónima.
-* Soporte multimodal estable (imagen + texto).
-* Integración de CI/CD con GitHub Actions.
-
----
-
 ## 🤝 Contribución
 
-1. Haz un fork del repositorio.
+1. Haz un **fork** del repositorio.
 2. Crea una rama para tu cambio.
-3. Abre un Pull Request con descripción detallada.
+3. Abre un **Pull Request** con descripción detallada.
 4. No incluyas secretos ni datos médicos en tus ejemplos.
 
 ---
 
 ## 📜 Licencia
 
-Este proyecto se distribuye bajo la licencia **MIT** (archivo LICENSE incluido).
+Este proyecto se distribuye bajo la licencia **MIT** (archivo `LICENSE` incluido).
 
 ---
 
+## 📬 Contacto
+
+**Autor:** [DeepRatAI](https://github.com/DeepRatAI)
+**Correo:** [info@deeprat.tech](mailto:info@deeprat.tech)
+**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/gonzalo-romero-b9b5b4355/)
+
+---
+
+## 🌐 Cita
+
+> DeepRatAI. *MedeX: AI-powered Clinical Reasoning Assistant.*
+> Hugging Face Spaces, 2025. [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+
+---
+
+## 🧠 "AI should assist physicians, not impersonate them."
+
+* Claves de API cargadas solo desde variables de entorno (`KIMI_API_KEY`).
+* `.streamlit/config.toml` mantiene CORS y XSRF habilitados.
+* `.gitignore` protege archivos sensibles (`.env`, `api_key.txt`, `__pycache__`).
+* No se almacenan conversaciones ni datos médicos.
+* Auditorías básicas con `pip-audit` y pruebas de humo (`test_deployment.py`).
+* Modo educativo activado por defecto; el modo profesional requiere confirmación explícita.
+
+---
+
+## 🧪 Pruebas
+
+Para ejecutar las pruebas:
+
+```bash
+pytest -q
+```
+
+El archivo `test_deployment.py` verifica la conectividad y funcionamiento básico del pipeline.
+
+---
+
+## 🤝 Contribución
+
+1. Haz un **fork** del repositorio.
+2. Crea una rama para tu cambio.
+3. Abre un **Pull Request** con descripción detallada.
+4. No incluyas secretos ni datos médicos en tus ejemplos.
+
+---
+
+## 📜 Licencia
+
+Este proyecto se distribuye bajo la licencia **MIT** (archivo `LICENSE` incluido).
+
+---
+
+<<<<<<< HEAD
+## 📬 Contacto
+
+**Autor:** [DeepRatAI](https://github.com/DeepRatAI)
+**Correo:** [info@deeprat.tech](mailto:info@deeprat.tech)
+**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/gonzalo-romero-b9b5b4355/)
+
+---
+
+## 🌐 Cita
+
+> DeepRatAI. *MedeX: AI-powered Clinical Reasoning Assistant.*
+> Hugging Face Spaces, 2025. [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+=======
 Hugging Face Spaces, 2025. [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+>>>>>>> origin/feature/package-v0.1.0
 
 ---
 
-### 🧠 “AI should assist physicians, not impersonate them.”
-
+## 🧠 “AI should assist physicians, not impersonate them.”

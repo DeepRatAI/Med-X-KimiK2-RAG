@@ -1,58 +1,57 @@
 """
-MedeX Command Line Interface.
-
-Provides a CLI tool to interact with the MedeX medical AI system.
+Command-line interface for MedeX
+Uses Click for CLI functionality
 """
+
 import click
+from medex import __version__
 from medex.app import run_once
+from medex.config import get_mode, get_config
 
 
-@click.command()
+@click.group()
+@click.version_option(version=__version__, prog_name="medex")
+def cli():
+    """MedeX - AI-powered Clinical Reasoning Assistant"""
+    pass
+
+
+@cli.command()
 @click.option(
     "--mode",
-    type=click.Choice(["educational", "professional"], case_sensitive=False),
-    default="educational",
-    help="Query mode: educational for learning, professional for clinical cases"
+    type=click.Choice(["mock", "educational", "professional"]),
+    help="Operation mode",
 )
 @click.option(
     "--query",
-    type=str,
+    "-q",
     required=True,
-    help="Medical query to process"
+    help="Medical query to process",
 )
-def main(mode: str, query: str):
-    """
-    MedeX - AI-Powered Clinical Reasoning Assistant (Educational Prototype)
-    
-    Process medical queries using the MedeX system with RAG capabilities.
-    
-    Examples:
-    
-        medex --mode educational --query "¿Qué es la diabetes?"
-        
-        medex --mode professional --query "Paciente con dolor torácico"
-    """
+def query(mode, query):
+    """Process a medical query"""
     try:
-        print(f"🏥 MedeX v0.1.0 - Processing query...")
-        print(f"📋 Mode: {mode}")
-        print(f"❓ Query: {query}")
-        print("-" * 60)
-        
         response = run_once(query, mode=mode)
-        
-        print("\n" + "=" * 60)
-        print("📝 Response:")
-        print("=" * 60)
-        print(response)
-        print("=" * 60)
-        
-    except KeyboardInterrupt:
-        print("\n\n⚠️  Interrupted by user")
+        click.echo(response)
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        click.echo(f"Error processing query: {e}", err=True)
         raise click.Abort()
 
 
-if __name__ == "__main__":
-    main()
+@cli.command()
+def config():
+    """Show current configuration"""
+    cfg = get_config()
+    click.echo(f"Mode: {cfg['mode']}")
+    click.echo(f"API Key configured: {cfg['has_api']}")
 
+
+@cli.command()
+def info():
+    """Show system information"""
+    click.echo(f"MedeX v{__version__}")
+    click.echo(f"Current mode: {get_mode()}")
+
+
+if __name__ == "__main__":
+    cli()

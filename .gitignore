@@ -21,13 +21,14 @@ wheels/
 *.egg
 
 # Virtual environments
-.venv/
 venv/
-ENV/
 env/
+ENV/
+.venv
 
 # Environment variables and secrets
 .env
+.env.local
 *.env
 api_key.txt
 
@@ -40,23 +41,31 @@ cache/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Logs
-*.log
-logs/
-
-# IDE
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Logs
+logs/
+*.log
+
+# Data and cache
+data/
+*.db
+*.sqlite
+
 # OS
 .DS_Store
 Thumbs.db
 
-# Data directories
-data/
-
-*.egg-info/
-
+# Streamlit
+.streamlit/secrets.toml
