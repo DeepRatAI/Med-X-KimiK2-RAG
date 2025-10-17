@@ -26,6 +26,21 @@ env/
 ENV/
 .venv
 
+# Environment variables and secrets
+.env
+.env.local
+*.env
+api_key.txt
+
+# Cache directories
+rag_cache/
+cache/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
 # IDEs
 .vscode/
 .idea/
@@ -39,18 +54,12 @@ ENV/
 htmlcov/
 .tox/
 
-# Environment variables
-.env
-.env.local
-api_key.txt
-
 # Logs
 logs/
 *.log
 
 # Data and cache
 data/
-cache/
 *.db
 *.sqlite
 

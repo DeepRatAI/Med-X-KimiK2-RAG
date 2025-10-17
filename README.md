@@ -98,6 +98,12 @@ Luego abre [http://localhost:7860](http://localhost:7860) y listo.
 Puedes probar MedeX directamente en su Space:
 👉 [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
 
+
+## ☁️ Demo oficial
+
+Puedes probar MedeX directamente en su Space:
+👉 [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+
 > Las claves y configuraciones se gestionan de forma segura en **Settings → Secrets** del Space.
 > No existen claves por defecto en el código.
 
@@ -153,6 +159,63 @@ Este proyecto se distribuye bajo la licencia **MIT** (archivo `LICENSE` incluido
 
 > DeepRatAI. *MedeX: AI-powered Clinical Reasoning Assistant.*
 > Hugging Face Spaces, 2025. [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+
+---
+
+## 🧠 "AI should assist physicians, not impersonate them."
+
+* Claves de API cargadas solo desde variables de entorno (`KIMI_API_KEY`).
+* `.streamlit/config.toml` mantiene CORS y XSRF habilitados.
+* `.gitignore` protege archivos sensibles (`.env`, `api_key.txt`, `__pycache__`).
+* No se almacenan conversaciones ni datos médicos.
+* Auditorías básicas con `pip-audit` y pruebas de humo (`test_deployment.py`).
+* Modo educativo activado por defecto; el modo profesional requiere confirmación explícita.
+
+---
+
+## 🧪 Pruebas
+
+Para ejecutar las pruebas:
+
+```bash
+pytest -q
+```
+
+El archivo `test_deployment.py` verifica la conectividad y funcionamiento básico del pipeline.
+
+---
+
+## 🤝 Contribución
+
+1. Haz un **fork** del repositorio.
+2. Crea una rama para tu cambio.
+3. Abre un **Pull Request** con descripción detallada.
+4. No incluyas secretos ni datos médicos en tus ejemplos.
+
+---
+
+## 📜 Licencia
+
+Este proyecto se distribuye bajo la licencia **MIT** (archivo `LICENSE` incluido).
+
+---
+
+<<<<<<< HEAD
+## 📬 Contacto
+
+**Autor:** [DeepRatAI](https://github.com/DeepRatAI)
+**Correo:** [info@deeprat.tech](mailto:info@deeprat.tech)
+**LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/gonzalo-romero-b9b5b4355/)
+
+---
+
+## 🌐 Cita
+
+> DeepRatAI. *MedeX: AI-powered Clinical Reasoning Assistant.*
+> Hugging Face Spaces, 2025. [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+=======
+Hugging Face Spaces, 2025. [https://huggingface.co/spaces/DeepRat/Med-X_25.10.8](https://huggingface.co/spaces/DeepRat/Med-X_25.10.8)
+>>>>>>> origin/feature/package-v0.1.0
 
 ---
 
