@@ -61,10 +61,15 @@ def test_adapters_can_build_pipeline():
 
 def test_config_settings():
     """Test that config settings are accessible."""
-    from medex.config import settings
+    from medex.config import get_config, get_mode, get_api_key
     
-    # Should have the expected attributes
-    assert hasattr(settings, "kimi_api_key")
-    assert hasattr(settings, "mode_default")
-    # Default mode should be educational
-    assert settings.mode_default in ("educational", "professional")
+    # Should have the expected functions
+    config = get_config()
+    assert isinstance(config, dict)
+    assert "mode" in config
+    assert "api_key" in config
+    assert "has_api" in config
+    
+    # Mode should be valid
+    mode = get_mode()
+    assert mode in ("mock", "educational", "professional")
